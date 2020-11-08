@@ -90,20 +90,21 @@ class CsvComparator
      */
     private function convertCsvsToArray()
     {
-        $this->oldCsvArray = self::csvToArray($this->oldCsvFile);
-        $this->newCsvArray = self::csvToArray($this->newCsvFile);
+        $this->oldCsvArray = self::csvToArray($this->oldCsvFile, $this->delimiter);
+        $this->newCsvArray = self::csvToArray($this->newCsvFile, $this->delimiter);
     }
 
     /**
      * Converts a file to array
      * @param $file
+     * @param $delimiter
      * @return array
      */
-    private static function csvToArray($file)
+    private static function csvToArray($file, $delimiter)
     {
         return array_map(
-            function ($v) {
-                return str_getcsv($v, $this->delimiter);
+            function ($v) use ($delimiter) {
+                return str_getcsv($v, $delimiter);
             }, file($file->getRealPath()));
     }
 
