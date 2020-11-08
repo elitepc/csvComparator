@@ -1,0 +1,10 @@
+.error {
+    color: red;
+}
+.results .new {
+    background-color: green;
+}
+.results .different .diff {
+    background-color: yellow;
+}
+
